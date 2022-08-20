@@ -17,7 +17,7 @@ TreeNode* parentmaker(TreeNode *root,int start ,map<TreeNode *,TreeNode *>& pare
     TreeNode* res;
     while (!q.empty())
     {
-        auto it=q.front() q.pop();
+        auto it=q.front(); q.pop();
         if(it->val==start) res=it;
         if(it->left)
         {
@@ -54,11 +54,11 @@ int timetobrust(map<TreeNode *,TreeNode *> &parentTracker,TreeNode * target)
                 q.push(it->left);
                 flo=1;
             } 
-            if(it->right && ) q.push(it->right);
-            if(parentTracker[it]) q.push(parentTracker[it]);
+            if(it->right && !visi[it->right] ) q.push(it->right);
+            if(parentTracker[it] && !visi[parentTracker[it]]) q.push(parentTracker[it]);
         }
         //i skip some part and below need to check is acutall
-        if(flo) cur++
+        if(flo) cur++;
     }
     return cur;
 }
