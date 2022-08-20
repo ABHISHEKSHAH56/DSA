@@ -32,7 +32,7 @@ vector<int> Preorder(TreeNode* root )
 
 //inorder
 
-vector<int> Preorder(TreeNode* root )
+vector<int> Inorder(TreeNode* root )
 {
     vector<int>ans;
     stack<TreeNode* >st;
@@ -57,7 +57,8 @@ vector<int> Preorder(TreeNode* root )
     return ans;
 
 }
-vector<int> Preorder(TreeNode* root )
+//post order
+vector<int> Postorder(TreeNode* root )
 {
     vector<int>ans;
     if(root==NULL) return ans;
