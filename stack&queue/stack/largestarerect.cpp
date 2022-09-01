@@ -32,6 +32,7 @@ vector<int> prevSmallerElement(vector<int> &arr, int n)
     
     return ans;
 }
+
  int largestRectangleArea(vector<int>& heights) {
     vector<int>prev=prevSmallerElement(heights,heights.size());
     vector<int>next=nextSmallerElement(heights,heights.size());
@@ -39,6 +40,7 @@ vector<int> prevSmallerElement(vector<int> &arr, int n)
     for(int i=0; i<heights.size(); i++)
     {
         int l=heights[i];
+        //hum check kar rhe hote hai right side
         if(next[i]==-1) next[i]=heights.size();
         int b=next[i]-prev[i]-1;
         area=max(area,l*b);
