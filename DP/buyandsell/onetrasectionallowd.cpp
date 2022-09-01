@@ -1,0 +1,34 @@
+// 1. You are given a number n, representing the number of days.
+// 2. You are given n numbers, where ith number represents price of stock on ith day.
+// 3. You are required to print the maximum profit you can make if you are allowed a single transaction.
+#include <bits/stdc++.h>
+#include <vector>
+
+using namespace std;
+
+int  Transaction(vector<int> arr) {
+  //write your code here
+   int lsf=INT_MAX;
+  int op=0;
+  int pist=0;
+  for(int i=0; i<arr.size(); i++)
+  {
+    if(arr[i]<lsf) lsf=arr[i];
+    else{
+        pist=arr[i]-lsf;
+        if(pist>op) op=pist;
+    } 
+  }
+  return op;
+}
+
+int  main() {
+  int n;
+  cin >> n;
+  vector<int>arr(n, 0);
+  for (int i = 0; i < arr.size(); i++) {
+    cin >> arr[i];
+  }
+  Transaction(arr);
+  return 0;
+}

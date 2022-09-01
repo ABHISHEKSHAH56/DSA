@@ -1,0 +1,7 @@
+#queue
+    FIFO
+--types of queue
+    1. implementing queue
+    2. circular queue
+    3. dequeu
+    
