@@ -1,64 +1,39 @@
 #include<bits/stdc++.h>
 using namespace std;
-// #include<bits/stdc++.h>
-// using namespace std;
 
-class Solution {
-public:
-    bool BFS(int i, int j ,vector<vector<int>>& arr, vector<vector<bool>>visit)
+int longestvalid(string s)
+{
+    stack<int>st;
+    st.push(-1);
+    int max=0;
+    for(int i=0; i<s.size(); i++)
     {
-        queue<pair<int,int>>q;
-        q.push({i,j});
-        int count=0; 
-        while(!q.empty())
-        {
-           
-            int x=q.size();           
-            for(int i=0; i<x; i++)
-            {
-                auto it=q.front();
-                q.pop();
-                if(visit[it.first][it.second]) continue;
-                visit[i][j]=true;
-                if(it.first==0 || it.second==0)
-                {
-                    count++;
-                    if(count==2) return true;
-                }
-                else if(it.first==arr.size()-1 ||it.second==arr[0].size()-1){
-                    count++;
-                    if(count==2)  return true;
-                }
-                else 
-                {
-                    if( (!arr[it.first+1][it.second]) && (arr[it.first+1][it.second]<=arr[it.first][it.second]))   q.push({it.first+1,it.second});
-                    if((!arr[it.first-1][it.second]) && (arr[it.first-1][it.second]<=arr[it.first][it.second]))   q.push({it.first-1,it.second});
-                    if((!arr[it.first][it.second+1]) && (arr[it.first][it.second+1]<=arr[it.first][it.second]))   q.push({it.first,it.second+1});
-                    if((!arr[it.first][it.second-1]) && (arr[it.first][it.second-1]<=arr[it.first][it.second]))   q.push({it.first,it.second-1});
-                }
-            }  
-            
-            
-        }
-        return false;
-    }
-    vector<vector<int>> pacificAtlantic(vector<vector<int>>& hei) {
-        //bfs
-        vector<vector<bool>>visit(hei.size()+1);
-        vector<vector<int>>ans;
-        for(int i=0; i<hei.size(); i++)
-        {
-          
-            for(int j=0; j<hei[0].size(); j++)
-            {
-                vector<int>it;
-                if(BFS(i,j, hei,visit)){
-                    it.push_back(i);
-                    it.push_back(j);
-                    ans.push_back(it);
-                }
+        if(s[i]=='(') st.push(i);
+        else{
+            st.pop();
+            if(st.empty()) st.push(i);
+            else {
+                int len=i-st.top();
+                if(max<len) max=len;
             }
         }
-        return ans;
     }
-};
+}
+//another solution O(1)
+int validlonget(string s)
+{
+   
+    int maxi=0;
+    int open=0;
+    int close=0;
+    for(int i=0; i<s.size(); i++)
+    {
+        if(s[i]=='(') open++;
+        else close++;
+        if(open==close) maxi=max(maxi,open+close);
+        else if(close>open)
+        {
+            open=close=0;
+        }
+}
+}
